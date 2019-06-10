@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gorecv index</title>
+</head>
+<body>
+<form id="form">
+    Select file to upload:
+    <input type="file" name="file" id="file">
+    <input type="submit" value="Upload!" name="submit">
+</form>
+<script>
+    let form = document.querySelector('form');
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        let filename = document.querySelector('[type=file]').value;
+        filename = filename.replace(/^.*[\\\/]/, '');
+        let file = document.querySelector('[type=file]').files[0];
+
+        let response = await fetch("/?name=" + filename, {
+            method: 'POST',
+            body: file,
+        });
+
+        if (!response.ok) {
+            let text = await response.text();
+            alert("Failed uploading " + filename + ": " + text);
+        } else {
+            alert("Successfully uploaded " + filename + "!");
+        }
+    })
+</script>
+</body>
+</html>
