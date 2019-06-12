@@ -3,6 +3,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -47,5 +48,6 @@ func main() {
 			w.Write(index)
 		}
 	})
+	fmt.Println("listening on http://localhost:" + strconv.Itoa(*port) + "/")
 	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(*port), nil))
 }
