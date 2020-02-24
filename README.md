@@ -1,4 +1,4 @@
-# gorecv
+# gorecv [![builds.sr.ht status](https://builds.sr.ht/~delthas/gorecv.svg)](https://builds.sr.ht/~delthas/gorecv?)
 
 Let people send files to your computer easily by starting a local HTTP server.
 
